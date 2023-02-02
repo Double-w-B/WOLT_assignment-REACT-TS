@@ -14,6 +14,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
     display: flex;
     align-items: center;
     color: #fff;
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
     span {
       width: 2.5rem;
@@ -154,6 +155,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
       font-size: 1.8rem;
       font-weight: bold;
       color: #fff;
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
     }
   }
 `;
