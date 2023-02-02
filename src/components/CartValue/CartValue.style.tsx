@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartValue = styled.div`
+export const CartValue = styled.div<{ isValue: boolean }>`
   width: 100%;
   height: calc(100% / 3);
   /* background-color: white; */
@@ -16,6 +16,7 @@ export const CartValue = styled.div`
     display: flex;
     align-items: center;
     color: #fff;
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
     span {
       width: 2.5rem;
@@ -30,6 +31,8 @@ export const CartValue = styled.div`
       font-weight: bold;
       transition: 0.3s linear;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      color: ${(props) => props.isValue && "#ffc93c"};
+      text-shadow: none;
     }
   }
 
@@ -52,7 +55,7 @@ export const CartValue = styled.div`
     input {
       width: 110px;
       height: 2.5rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
       text-align: center;
       border-radius: 0.5rem;
@@ -64,6 +67,8 @@ export const CartValue = styled.div`
       backdrop-filter: blur(0.3px);
       -webkit-backdrop-filter: blur(0.3px);
       border: 1px solid rgba(255, 255, 255, 0.3);
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+      font-family: inherit;
     }
 
     button {
@@ -77,6 +82,7 @@ export const CartValue = styled.div`
       transition: 0.3s linear;
       background-color: #0081c9;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
       &:active {
         transform: scale(0.8);
@@ -89,6 +95,8 @@ export const CartValue = styled.div`
         font-size: 2rem;
         cursor: pointer;
         color: #fff;
+        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4))
+
       }
     }
   }
