@@ -7,21 +7,26 @@ interface Props {
 export const AppContext = React.createContext<any>({});
 
 export const AppProvider = ({ children }: Props) => {
-  const [itemsTotal, setItemsTotal] = React.useState("");
-  const [valueTotal, setValueTotal] = React.useState("");
-  const [distanceTotal, setDistanceTotal] = React.useState("");
-  const [totalFee, setTotalFee] = React.useState("");
+  const [cartItems, setCartItems] = React.useState(0);
+  const [cartValue, setCartValue] = React.useState("0");
+  const [distance, setDistance] = React.useState("0");
+
+  function clearValues() {
+    setCartItems(0);
+    setCartValue("0");
+    setDistance("0");
+  }
+
   return (
     <AppContext.Provider
       value={{
-        itemsTotal,
-        setItemsTotal,
-        valueTotal,
-        setValueTotal,
-        distanceTotal,
-        setDistanceTotal,
-        totalFee,
-        setTotalFee,
+        cartValue,
+        setCartValue,
+        cartItems,
+        setCartItems,
+        distance,
+        setDistance,
+        clearValues,
       }}
     >
       {children}
