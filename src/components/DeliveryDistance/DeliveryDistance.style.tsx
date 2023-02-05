@@ -13,7 +13,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
     font-weight: bold;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: var(--white-clr);
     text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
     span {
@@ -23,13 +23,13 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
       place-items: center;
       margin: 0 0.5rem;
       border-radius: 50%;
-      background-color: #0081c9;
+      background-color: var(--primary-blue-clr);
       transition: 0.3s linear;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
       svg {
         transform: rotate(-90deg);
-        color: ${(props) => props.isValue && "#ffc93c"};
+        color: ${(props) => props.isValue && "var(--yellow-clr)"};
       }
     }
   }
@@ -38,7 +38,6 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
     order: 2;
     width: 230px;
     height: 4rem;
-    /* background-color: red; */
     align-self: end;
     display: flex;
     flex-direction: column;
@@ -47,28 +46,28 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
 
     &:hover {
       & ~ p span {
-        color: #ffc93c;
+        color: var(--yellow-clr);
       }
     }
 
     input {
       width: 100%;
       -webkit-appearance: none;
-      background: transparent;
+      background-color: transparent;
 
       &:focus {
         outline: none;
 
         &::-webkit-slider-runnable-track {
-          background: #fff;
+          background-color: var(--white-clr);
         }
 
         &::-ms-fill-lower {
-          background: #0081c9;
+          background-color: var(--primary-blue-clr);
         }
 
         ::-ms-fill-upper {
-          background: #0081c9;
+          background-color: var(--primary-blue-clr);
         }
       }
 
@@ -77,7 +76,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         height: 8.4px;
         cursor: pointer;
         border-width: 16px 0;
-        background: transparent;
+        background-color: transparent;
         border-color: transparent;
         color: transparent;
       }
@@ -87,7 +86,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         height: 36px;
         width: 16px;
         border-radius: 0.5rem;
-        background: #3071a9;
+        background-color: var(--primary-blue-clr);
         cursor: grab;
         margin-top: -14px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -103,7 +102,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         height: 36px;
         width: 16px;
         border-radius: 0.5rem;
-        background: #0081c9;
+        background-color: var(--primary-blue-clr);
         cursor: grab;
 
         &:active {
@@ -117,7 +116,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         height: 36px;
         width: 16px;
         border-radius: 0.5rem;
-        background: #0081c9;
+        background-color: var(--primary-blue-clr);
 
         cursor: pointer;
       }
@@ -126,7 +125,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         width: 100%;
         height: 8.4px;
         cursor: pointer;
-        background: #ffffff;
+        background-color: var(--white-clr);
         border-radius: 0.5rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
@@ -135,18 +134,18 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         width: 100%;
         height: 8.4px;
         cursor: pointer;
-        background: #ffffff;
+        background-color: var(--white-clr);
         border-radius: 0.5rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
 
       &::-ms-fill-lower {
-        background: #ffffff;
+        background-color: var(--white-clr);
         border-radius: 0.5rem;
       }
 
       &::-ms-fill-upper {
-        background: #ffffff;
+        background-color: var(--white-clr);
         border-radius: 0.5rem;
       }
     }
@@ -154,7 +153,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
     label {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #fff;
+      color: var(--white-clr);
       text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
     }
   }

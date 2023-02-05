@@ -3,11 +3,9 @@ import styled from "styled-components";
 export const CartValue = styled.div<{ isValue: boolean }>`
   width: 100%;
   height: calc(100% / 3);
-  /* background-color: white; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 
   p {
     order: 1;
@@ -15,7 +13,7 @@ export const CartValue = styled.div<{ isValue: boolean }>`
     font-weight: bold;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: var(--white-clr);
     text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
     span {
@@ -24,14 +22,14 @@ export const CartValue = styled.div<{ isValue: boolean }>`
       display: grid;
       place-items: center;
       margin: 0 0.5rem;
-      background-color: #0081c9;
+      background-color: var(--primary-blue-clr);
       border-radius: 50%;
       padding-right: 2px;
       font-size: 1.9rem;
       font-weight: bold;
       transition: 0.3s linear;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      color: ${(props) => props.isValue && "#ffc93c"};
+      color: ${(props) => props.isValue && "var(--yellow-clr)"};
       text-shadow: none;
     }
   }
@@ -40,7 +38,6 @@ export const CartValue = styled.div<{ isValue: boolean }>`
     order: 2;
     width: 230px;
     height: 3.5rem;
-    /* background-color: red; */
     align-self: end;
     display: flex;
     align-items: center;
@@ -48,7 +45,7 @@ export const CartValue = styled.div<{ isValue: boolean }>`
 
     &:hover {
       & ~ p span {
-        color: #ffc93c;
+        color: var(--yellow-clr);
       }
     }
 
@@ -60,9 +57,9 @@ export const CartValue = styled.div<{ isValue: boolean }>`
       text-align: center;
       border-radius: 0.5rem;
       outline: none;
-      color: #fff;
+      color: var(--white-clr);
 
-      background: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.2);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(0.3px);
       -webkit-backdrop-filter: blur(0.3px);
@@ -80,7 +77,7 @@ export const CartValue = styled.div<{ isValue: boolean }>`
       cursor: pointer;
       border-radius: 0.5rem;
       transition: 0.3s linear;
-      background-color: #0081c9;
+      background-color: var(--primary-blue-clr);
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
@@ -94,7 +91,7 @@ export const CartValue = styled.div<{ isValue: boolean }>`
       svg {
         font-size: 2rem;
         cursor: pointer;
-        color: #fff;
+        color: var(--white-clr);
         filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4))
 
       }

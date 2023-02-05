@@ -1,36 +1,49 @@
 @import url("https://fonts.cdnfonts.com/css/omnes");
 
+:root {
+  --primary-blue-clr: #0081c9;
+  --secondary-blue-clr: #5bc0f8;
+  --yellow-clr: #ffc93c;
+  --white-clr: #fff;
+  --red-clr: #f73131;
+}
+
 html {
   width: 100vw;
   height: 100vh;
   -webkit-tap-highlight-color: transparent;
   font-family: "Omnes", sans-serif;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--primary-blue-clr);
+}
+
 body {
   width: 100%;
   height: 100%;
-  /* background-color: #EEEEEE; */
-  background-color: #00BBE3;
-  /* background-color: #ffcd5b; */
-  background-color: #0081C9;
-  display: grid;
-  place-items: center;
 }
 
 main {
-  width: 60vw;
-  height: 80vh;
+  width: 920px;
+  height: 600px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 80px 1fr;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 3rem;
   border-radius: 0.5rem;
-  /* background-color: #00bbe3; */
-  background-color: #5BC0F8;
+  background-color: var(--secondary-blue-clr);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
