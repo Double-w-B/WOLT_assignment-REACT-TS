@@ -5,25 +5,53 @@ export const TotalSection = styled.section`
   grid-row: 2/3;
   border-radius: 0.5rem;
   margin: 2rem 0.5rem 2rem 0;
-  padding: 2rem 0;
+  padding: 0 0 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: relative;
 
   .error {
     width: 100%;
     position: absolute;
-    bottom: 0.5rem;
+    bottom: -0.5rem;
     left: 50%;
     transform: translate(-50%);
     font-size: 1.2rem;
     font-weight: bold;
-    color: var(--red-clr);
+    color: var(--white-clr);
     letter-spacing: 0.5px;
     text-align: center;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+  }
+
+  @media screen and (max-width: 900px) {
+    margin: 0 0 2rem 0;
+    padding: 2rem 0.2rem 3rem 0;
+
+    .error {
+      bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-column: 1/-1;
+    grid-row: 3/-1;
+    margin: 0;
+    padding: 1rem 2rem 2rem 2rem;
+    justify-content: space-around;
+
+    .error {
+      bottom: 0.7rem;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+  @media screen and (max-width: 550px) {
+    padding: 1rem 0.5rem 2rem 0rem;
   }
 `;
 
@@ -73,11 +101,45 @@ export const TotalResult = styled.div`
       box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
     }
   }
+
+  @media screen and (max-width: 1000px) {
+    .value {
+      p {
+        font-size: 4.6rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 95%;
+    height: 60%;
+
+    .value {
+      width: 90%;
+
+      p {
+        font-size: 4.4rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    .value {
+      width: 70%;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .value {
+      width: 75%;
+    }
+  }
 `;
 
 export const TotalButtons = styled.div<{ isReady: boolean }>`
   width: 90%;
-  height: 20%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
 
@@ -100,7 +162,8 @@ export const TotalButtons = styled.div<{ isReady: boolean }>`
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
 
     &:last-child {
-      color: ${(props) => (props.isReady ? "var(--yellow-clr)" : "var(--white-clr)")};
+      color: ${(props) =>
+        props.isReady ? "var(--yellow-clr)" : "var(--white-clr)"};
     }
 
     &:hover {
@@ -109,6 +172,15 @@ export const TotalButtons = styled.div<{ isReady: boolean }>`
 
     &:active {
       transform: scale(0.9);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+
+    button {
+      max-height: 50px;
+      padding: 0.5rem;
     }
   }
 `;

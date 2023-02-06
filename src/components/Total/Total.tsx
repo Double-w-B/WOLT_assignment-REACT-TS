@@ -1,13 +1,29 @@
 import React from "react";
 import * as Styled from "./Total.style";
 import { AppContext } from "../../context/Context";
+import OrderTime from "./OrderTime";
 
 const Total: React.FC = () => {
   const { cartValue, cartItems, distance, clearValues } =
     React.useContext(AppContext);
+
+  const currentDate = new Date().toISOString().substr(0, 10);
+  const currentTime = `${checkTime(new Date().getHours())}:${checkTime(
+    new Date().getMinutes()
+  )}`;
+
+  const [date, setDate] = React.useState<string>(currentDate);
+  const [time, setTime] = React.useState<string>(currentTime);
   const [totalFee, setTotalFee] = React.useState("");
-  const [isReady, setIsReady] = React.useState(false);
   const [errorMsg, setErrorMsg] = React.useState("");
+  const [isReady, setIsReady] = React.useState(false);
+
+  const orderTimeState = {
+    date,
+    setDate,
+    time,
+    setTime,
+  };
 
   React.useEffect(() => {
     setTotalFee("");
@@ -15,7 +31,6 @@ const Total: React.FC = () => {
     if (cartItems > 0 && +cartValue > 0 && +distance > 0 && !isReady) {
       setIsReady(true);
     }
-
     if (isReady && (cartItems === 0 || +cartValue === 0 || +distance === 0)) {
       setIsReady(false);
     }
@@ -32,19 +47,38 @@ const Total: React.FC = () => {
     }
   }, [errorMsg]);
 
-  function checkFridayRush() {
-    const currentDay = new Date().toLocaleString("en-En", {
+  function checkTime(num: number) {
+    if (num.toString().length === 1) {
+      return `0${num}`;
+    }
+    return num;
+  }
+
+  function checkIsFridayRush() {
+    const selectedDay = new Date(date).toLocaleString("en-En", {
       weekday: "long",
     });
-    const currentHour = new Date()
+
+    const dateArr = date.split("-");
+    const timeArr = time.split(":");
+    const tempDate = Date.UTC(
+      +dateArr[0],
+      +dateArr[1],
+      +dateArr[2],
+      +timeArr[0],
+      +timeArr[1],
+      0
+    );
+
+    const selectedHour = new Date(tempDate)
       .toLocaleString("en-En", {
         hour: "numeric",
         timeZone: "UTC",
       })
       .split(" ")[0];
 
-    const isFriday = currentDay === "Friday";
-    const isRushTime = +currentHour >= 3 && +currentHour <= 7;
+    const isFriday = selectedDay === "Friday";
+    const isRushTime = +selectedHour >= 3 && +selectedHour <= 7;
     const isFridayRush = isFriday && isRushTime;
 
     return isFridayRush;
@@ -55,7 +89,7 @@ const Total: React.FC = () => {
     let extraItemsSurcharge = 0;
     let freeSurchargeNumOfItems = 4;
     let deliveryFee = 0;
-    const fridayRush = checkFridayRush();
+    const isFridayRush = checkIsFridayRush();
     let total: number;
 
     if (cartItems === 0 || +cartValue === 0 || +distance === 0) {
@@ -80,7 +114,7 @@ const Total: React.FC = () => {
 
     total = cartValueSurcharge + extraItemsSurcharge + deliveryFee;
 
-    if (fridayRush) total = total * 1.2;
+    if (isFridayRush) total = total * 1.2;
     if (total > 15) total = 15;
     if (+cartValue >= 100) total = 0;
 
@@ -96,6 +130,8 @@ const Total: React.FC = () => {
     setTotalFee("");
     setIsReady(false);
     clearValues();
+    setDate(currentDate);
+    setTime(currentTime);
   }
 
   function handleCalculateButton() {
@@ -105,6 +141,7 @@ const Total: React.FC = () => {
 
   return (
     <Styled.TotalSection>
+      <OrderTime {...orderTimeState} />
       <Styled.TotalResult>
         <p>Total fee payment</p>
         <div className="value">
