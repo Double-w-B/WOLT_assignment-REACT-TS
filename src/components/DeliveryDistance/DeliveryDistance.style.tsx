@@ -5,7 +5,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
   height: calc(100% / 3);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-top: 2rem;
 
   p {
     order: 1;
@@ -19,6 +19,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
     span {
       width: 2.5rem;
       height: 2.5rem;
+      font-size: 1.8rem;
       display: grid;
       place-items: center;
       margin: 0 0.5rem;
@@ -37,7 +38,7 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
   .value {
     order: 2;
     width: 230px;
-    height: 4rem;
+    height: 4.5rem;
     align-self: end;
     display: flex;
     flex-direction: column;
@@ -50,7 +51,61 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
       }
     }
 
-    input {
+    div {
+      position: relative;
+
+      input[type="text"] {
+        width: 110px;
+        height: 40px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 0.5rem;
+        outline: none;
+        color: var(--white-clr);
+        text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+        font-family: inherit;
+        transition: 0.2s linear;
+        background-color: ${(props) =>
+          props.isValue ? "rgba(255, 255, 255, 0.2)" : "transparent"};
+        box-shadow: ${(props) =>
+          props.isValue ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none"};
+        backdrop-filter: ${(props) => (props.isValue ? "blur(0.3px)" : "none")};
+        -webkit-backdrop-filter: ${(props) =>
+          props.isValue ? "blur(0.3px)" : "none"};
+        border: ${(props) =>
+          props.isValue ? "1px solid rgba(255, 255, 255, 0.3)" : "none"};
+
+        &:hover,
+        &:focus {
+          background-color: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(0.3px);
+          -webkit-backdrop-filter: blur(0.3px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+
+          & ~ p {
+            right: -2rem;
+          }
+        }
+        &:focus {
+          & ~ p {
+            right: -2rem;
+          }
+        }
+      }
+      p {
+        position: absolute;
+        top: 50%;
+        right: ${(props) => (props.isValue ? "-2rem" : "1rem")};
+        transform: translateY(-50%);
+        transition: 0.2s linear;
+        padding-bottom: 2px;
+        pointer-events: none;
+      }
+    }
+
+    input[type="range"] {
       width: 100%;
       -webkit-appearance: none;
       background-color: transparent;
@@ -112,12 +167,10 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
 
       &::-ms-thumb {
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
         height: 36px;
         width: 16px;
         border-radius: 0.5rem;
         background-color: var(--primary-blue-clr);
-
         cursor: pointer;
       }
 
@@ -149,12 +202,86 @@ export const DeliveryDistance = styled.div<{ isValue: boolean }>`
         border-radius: 0.5rem;
       }
     }
+  }
+  @media screen and (max-width: 900px) {
+    p {
+      margin-bottom: 0.5rem;
+    }
+    .value {
+      margin-bottom: 1rem;
+    }
+  }
 
-    label {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: var(--white-clr);
-      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+
+    p {
+      margin-bottom: 0;
+    }
+    .value {
+      margin-bottom: 0;
+      align-self: unset;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    p {
+      font-size: 1.6rem;
+    }
+    .value div input[type="text"] {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    p {
+      font-size: 1.5rem;
+
+      span {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.6rem;
+      }
+    }
+    .value {
+      width: 210px;
+      div {
+        input {
+          height: 35px;
+        }
+        p {
+          padding-bottom: 0px;
+        }
+      }
+
+      input[type="range"] {
+        &::-webkit-slider-thumb {
+          height: 30px;
+          width: 13px;
+        }
+        &::-moz-range-thumb {
+          height: 30px;
+          width: 13px;
+        }
+        &::-ms-thumb {
+          height: 30px;
+          width: 13px;
+        }
+
+        &::-ms-track {
+          height: 7px;
+        }
+        &::-webkit-slider-runnable-track {
+          height: 7px;
+        }
+        &::-moz-range-track {
+          height: 7px;
+        }
+      }
     }
   }
 `;

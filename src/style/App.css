@@ -5,7 +5,6 @@
   --secondary-blue-clr: #5bc0f8;
   --yellow-clr: #ffc93c;
   --white-clr: #fff;
-  --red-clr: #f73131;
 }
 
 html {
@@ -27,7 +26,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: var(--primary-blue-clr);
 }
 
@@ -46,4 +45,25 @@ main {
   border-radius: 0.5rem;
   background-color: var(--secondary-blue-clr);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.3s linear;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    height: calc(95vh - 1rem);
+    margin-top: 1rem;
+    grid-template-rows: 65px 230px 1fr;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  main {
+    width: 95%;
+  }
 }

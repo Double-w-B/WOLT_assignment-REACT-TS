@@ -75,7 +75,6 @@ const CartValue: React.FC = () => {
           type="string"
           value={Number(cartValue).toFixed(2)}
           onChange={handleInputChange}
-          onDoubleClick={(e: any) => e.target.select()}
         />
         <button
           onClick={handlePlusButton}

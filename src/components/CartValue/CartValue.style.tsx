@@ -5,7 +5,7 @@ export const CartValue = styled.div<{ isValue: boolean }>`
   height: calc(100% / 3);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-top: 2rem;
 
   p {
     order: 1;
@@ -13,6 +13,7 @@ export const CartValue = styled.div<{ isValue: boolean }>`
     font-weight: bold;
     display: flex;
     align-items: center;
+    margin-bottom: 1.5rem;
     color: var(--white-clr);
     text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
 
@@ -51,14 +52,13 @@ export const CartValue = styled.div<{ isValue: boolean }>`
 
     input {
       width: 110px;
-      height: 2.5rem;
+      height: 40px;
       font-size: 1.8rem;
       font-weight: bold;
       text-align: center;
       border-radius: 0.5rem;
       outline: none;
       color: var(--white-clr);
-
       background-color: rgba(255, 255, 255, 0.2);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(0.3px);
@@ -92,8 +92,63 @@ export const CartValue = styled.div<{ isValue: boolean }>`
         font-size: 2rem;
         cursor: pointer;
         color: var(--white-clr);
-        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4))
+        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4));
+      }
+    }
+  }
 
+  @media screen and (max-width: 900px) {
+    p {
+      margin-bottom: 1rem;
+    }
+    .value {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+
+    p {
+      margin-bottom: 0;
+    }
+    .value {
+      margin-bottom: 0;
+      align-self: unset;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    p {
+      font-size: 1.6rem;
+    }
+    .value input {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    p {
+      font-size: 1.5rem;
+
+      span {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.7rem;
+      }
+    }
+    .value {
+      width: 210px;
+      input {
+        height: 35px;
+      }
+
+      button {
+        padding: 0.1rem;
       }
     }
   }
