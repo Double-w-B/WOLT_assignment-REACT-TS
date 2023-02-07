@@ -3,18 +3,27 @@ import { RiRouteLine } from "react-icons/ri";
 import * as Styled from "./DeliveryDistance.style";
 import { AppContext } from "../../context/Context";
 
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
+
 const DeliveryDistance: React.FC = () => {
   const { distance, setDistance } = React.useContext(AppContext);
 
   const isValue = +distance > 0;
-  const extraSpaceRegExp = /(?!^)(?=(?:\d{3})+(?:\.|$))/gm;
+
+  function handleInputChange(e: InputEvent) {
+    if (e.target.value === "") return setDistance("0");
+    if (isNaN(+e.target.value)) return;
+    if (+e.target.value > 20000) return setDistance("20000");
+    setDistance(+e.target.value);
+  }
 
   return (
     <Styled.DeliveryDistance isValue={isValue}>
       <div className="value">
-        <label htmlFor="distance">
-          {distance.toString().replace(extraSpaceRegExp, " ")} m
-        </label>
+        <div>
+          <input type="text" value={distance} onChange={handleInputChange} />
+          <p>m</p>
+        </div>
 
         <input
           type="range"

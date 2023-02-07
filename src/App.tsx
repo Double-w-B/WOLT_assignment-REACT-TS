@@ -5,10 +5,24 @@ import "./style/App.css";
 import * as Styled from "./App.style";
 
 const App: React.FC = () => {
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    function checkWidowWidth() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", checkWidowWidth);
+    return () => window.removeEventListener("resize", checkWidowWidth);
+  });
+
   return (
     <Fragment>
       <main>
-        <Styled.Title>Easy steps to count Wolt delivery fee</Styled.Title>
+        <Styled.Title>
+          {windowWidth > 768
+            ? "Easy steps to count Wolt delivery fee"
+            : "Wolt delivery fee calculator"}
+        </Styled.Title>
         <AppProvider>
           <Styled.ValuesSection>
             <Component.CartItems />
